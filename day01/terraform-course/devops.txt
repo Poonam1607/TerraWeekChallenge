@@ -1,0 +1,2 @@
+  This is the file we are creating manually.
+  Next are going to automate this process by using terraform.
