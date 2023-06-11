@@ -1,0 +1,16 @@
+$ terraform workspace new ProjectA
+Created and switched to workspace "ProjectA"!
+
+$ terraform workspace new ProjectB
+Created and switched to workspace "ProjectB"!
+
+$ terraform worlspace select ProjectA
+Switched to workspace "ProjectA"
+
+$ ls
+main.tf terraform.tfstate.d variable.tf 
+$ tree terraform.tfstate.d/
+  |--ProjectA
+  |   |-- terraform.tfstate
+  |--ProjectB
+     |-- terraform.tfstate
