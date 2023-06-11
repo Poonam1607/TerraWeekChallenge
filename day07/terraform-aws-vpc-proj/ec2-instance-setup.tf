@@ -30,7 +30,7 @@ resource "aws_instance" "my_web_instances" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "my-key-pair"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDwmgMHFJE7J4qepIzAZL3/yC6J0zsEAb/oHYL+WBBDNUjSH4TeHUnHVNe9b/pyPcub+O/HNvlGrzSxUp0xT0b3O7kkTtgBKiG8NaBbonj+c7byfOGER80DYxc5adlBltuIDd8StFe7OMzbYyUSr1mdxDTIWm/OoE39G/fu3hTqUGkykv072GAy8nMFejITRw9pf+53B9ziE5rsdOUH4uqBiQa/Ng/qKo7h9MtJGcloRATYiObXwAgrHtt3sDrtvkq2ZceT906/BJm1Twlm+BHlQecHV18Ak3bzm/6HzlsA/q+yORsoB+VxSUxvVy0nXTc1X8vJAD4KSYVL5DTrpisdnQAIcuqAbea+LMku2o4sdnrrIlUi8/8BXeVbI4TNNGd0+sWpCVcDEhb4gyA/XXTvloQyjTYrL4+am/9XEY6NGdsrPK74sjvtpUZPUrmzTJ/mJWG5ncGY88GAj+YZAsY5pnAqh2CkR2TUpglugldnWyrppbe2QyC9iQkgUGSkBTs= rahulwagh@Rahuls-MacBook-Pro.local"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCe0PKAuH5M/vMTdXPpvoYO+TThkoHHFKqZapwFtLoxDLZSFPeJ3iO6VTXWKd4QiQip8d1BKHiVgwAMGsm+X65Aaq3GN3QRxsXp0BaNqeAZBwsJJamqVYObXrFxGTPHvroC107LIWek5Mishnbrl2cW/rvoEZsUi5Yq4w6nkboAwz3+9GVbnjzc8TkpA4Az2pLOtBMclMcBKBLzfnNoqVERnlfNb1FchscMj/xthE0bgJkiqX/o1hVGGOmWFzr6lVQlfuwwG75dFZwAHzSyaYimmPeWeur0e4a7iotIU1DuMpEfWH8IUfKGhw7V2ThvD/VF/AVQ0tmnCJTOPyea0S+H"
 }
 
 
