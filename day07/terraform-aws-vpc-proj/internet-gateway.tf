@@ -1,6 +1,6 @@
-resource "aws_internet_gateway" "public_internet_gateway" {
-  vpc_id = aws_vpc.vpc-jhooq-eu-central-1.id
+resource "aws_internet_gateway" "custom-internet-gateway" {
+  vpc_id = aws_vpc.custom-vpc.id
   tags = {
-    Name = "IGW: For Jhooq EU Central Project"
+    Name = "My-Internet-Gateway"
   }
 }
