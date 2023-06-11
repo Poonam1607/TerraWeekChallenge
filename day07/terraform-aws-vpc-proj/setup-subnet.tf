@@ -4,6 +4,7 @@ resource "aws_subnet" "aws_jhooq_public_subnets" {
   vpc_id     = aws_vpc.vpc-jhooq-eu-central-1.id
   cidr_block = element(var.cidr_public_subnet, count.index)
   availability_zone = element(var.eu_availability_zone, count.index)
+  map_public_ip_on_launch = true
 
   tags = {
     Name = "Subnet-Public : Public Subnet ${count.index + 1}"
