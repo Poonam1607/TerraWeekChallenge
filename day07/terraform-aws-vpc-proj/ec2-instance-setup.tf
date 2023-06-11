@@ -9,23 +9,31 @@ data "aws_subnet" "public_subnet" {
   ]
 }
 
-resource "aws_instance" "ec2_example" {
+resource "aws_instance" "my_web_instances" {
   ami = "ami-0767046d1677be5a0"
   instance_type = "t2.micro"
   tags = {
     Name = "EC2 Public subnet 1"
   }
-  key_name= "aws_key"
+  key_name= "my-key-pair"
   subnet_id = data.aws_subnet.public_subnet.id
-  vpc_security_group_ids = [aws_security_group.sg_vpc_jhooq_eu_central_1.id]
+  vpc_security_group_ids = [aws_security_group.Custom_Public_SG_DB.id]
+  user_data = <<-EOF
+        #!/bin/bash
+        yum update -y
+        yum install httpd -y
+        systemctl start httpd
+        systemctl enable httpd
+        echo "<html><body><h1>This is My Custom Project Tier 1 </h1></body></html>" > /var/www/html/index.html
+        EOF
 }
 
 resource "aws_key_pair" "deployer" {
-  key_name   = "aws_key"
+  key_name   = "my-key-pair"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDwmgMHFJE7J4qepIzAZL3/yC6J0zsEAb/oHYL+WBBDNUjSH4TeHUnHVNe9b/pyPcub+O/HNvlGrzSxUp0xT0b3O7kkTtgBKiG8NaBbonj+c7byfOGER80DYxc5adlBltuIDd8StFe7OMzbYyUSr1mdxDTIWm/OoE39G/fu3hTqUGkykv072GAy8nMFejITRw9pf+53B9ziE5rsdOUH4uqBiQa/Ng/qKo7h9MtJGcloRATYiObXwAgrHtt3sDrtvkq2ZceT906/BJm1Twlm+BHlQecHV18Ak3bzm/6HzlsA/q+yORsoB+VxSUxvVy0nXTc1X8vJAD4KSYVL5DTrpisdnQAIcuqAbea+LMku2o4sdnrrIlUi8/8BXeVbI4TNNGd0+sWpCVcDEhb4gyA/XXTvloQyjTYrL4+am/9XEY6NGdsrPK74sjvtpUZPUrmzTJ/mJWG5ncGY88GAj+YZAsY5pnAqh2CkR2TUpglugldnWyrppbe2QyC9iQkgUGSkBTs= rahulwagh@Rahuls-MacBook-Pro.local"
 }
 
 
 output "fetched_info_from_aws" {
-  value = format("%s%s","ssh -i /Users/rahulwagh/.ssh/aws_ec2_terraform ubuntu@",aws_instance.ec2_example.public_dns)
+  value = format("%s%s","ssh -i /Users/poonampawar/Downloads/my-key-pair ubuntu@",aws_instance.my_web_instances.public_dns)
 }
