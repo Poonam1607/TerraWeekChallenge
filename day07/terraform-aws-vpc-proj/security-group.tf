@@ -1,4 +1,4 @@
-resource "aws_security_group" "sg_vpc_jhooq_eu_central_1" {
+resource "aws_security_group" "My-sg" {
   egress = [
     {
       cidr_blocks      = [ "0.0.0.0/0", ]
@@ -16,18 +16,19 @@ resource "aws_security_group" "sg_vpc_jhooq_eu_central_1" {
     {
       cidr_blocks      = [ "0.0.0.0/0", ]
       description      = ""
-      from_port        = 22
+      from_port        = "0"
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
-      protocol         = "tcp"
+      protocol         = "-1"
       security_groups  = []
       self             = false
-      to_port          = 22
+      to_port          = "0"
     }
   ]
-  vpc_id = aws_vpc.vpc-jhooq-eu-central-1.id
-  depends_on = [aws_vpc.vpc-jhooq-eu-central-1]
+  vpc_id = aws_vpc.custom_vpc.id
+  depends_on = [aws_vpc.custom_vpc]
+  description = "security group for load balancer"
   tags = {
-    Name = "SG : vpc-jhooq-eu-central-1 "
+    Name = "My-sg"
   }
 }
